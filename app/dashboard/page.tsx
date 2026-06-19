@@ -85,14 +85,22 @@ export default function Dashboard() {
 
       const { data: allRecords } = await supabase
         .from("records")
-        .select("user_id, weight, profiles(username)");
+        .select("user_id, weight");
 
-      if (allRecords) {
+      const { data: allProfiles } = await supabase
+        .from("profiles")
+        .select("id, username");
+
+      if (allRecords && allProfiles) {
+        const profileMap: { [key: string]: string } = {};
+        for (const p of allProfiles) {
+          profileMap[p.id] = p.username;
+        }
         const maxByUser: { [key: string]: { username: string; max: number } } = {};
         for (const r of allRecords as any[]) {
           const uid = r.user_id;
           if (!maxByUser[uid] || r.weight > maxByUser[uid].max) {
-            maxByUser[uid] = { username: r.profiles?.username || "???", max: r.weight };
+            maxByUser[uid] = { username: profileMap[uid] || "???", max: r.weight };
           }
         }
         setRivals(Object.values(maxByUser).sort((a, b) => b.max - a.max));
