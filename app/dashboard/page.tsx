@@ -174,7 +174,7 @@ export default function Dashboard() {
               value={targetWeight}
               onChange={(e) => setTargetWeight(e.target.value)}
               placeholder="例: 100"
-              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900"
             />
             <span className="flex items-center text-sm text-gray-500">kg</span>
             <button type="submit" className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition">
@@ -208,17 +208,17 @@ export default function Dashboard() {
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">日付</label>
                     <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
-                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900" />
+                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900" />
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">重量 (kg)</label>
                     <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="60"
-                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900" required />
+                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900" required />
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">回数</label>
                     <input type="number" value={reps} onChange={(e) => setReps(e.target.value)} placeholder="5"
-                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900" required />
+                      className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900" required />
                   </div>
                 </div>
                 <button type="submit" className="w-full bg-gray-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition">
