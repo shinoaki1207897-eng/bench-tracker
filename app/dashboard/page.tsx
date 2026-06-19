@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import type { Record, Profile, Goal } from "@/lib/supabase";
+import type { BenchRecord, Profile, Goal } from "@/lib/supabase";
 
-function predictGoalDate(records: Record[], targetWeight: number): string {
+function predictGoalDate(records: BenchRecord[], targetWeight: number): string {
   if (records.length < 2) return "記録が少なすぎます（2件以上必要）";
 
   const sorted = [...records].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
@@ -56,7 +56,7 @@ function suggestMenu(maxWeight: number): { name: string; sets: string }[] {
 export default function Dashboard() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [records, setRecords] = useState<Record[]>([]);
+  const [records, setRecords] = useState<BenchRecord[]>([]);
   const [goal, setGoal] = useState<Goal | null>(null);
   const [rivals, setRivals] = useState<{ username: string; max: number }[]>([]);
 
@@ -88,7 +88,7 @@ export default function Dashboard() {
         .select("user_id, weight, profiles(username)");
 
       if (allRecords) {
-        const maxByUser: Record<string, { username: string; max: number }> = {};
+        const maxByUser: { [key: string]: { username: string; max: number } } = {};
         for (const r of allRecords as any[]) {
           const uid = r.user_id;
           if (!maxByUser[uid] || r.weight > maxByUser[uid].max) {
