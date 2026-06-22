@@ -46,7 +46,7 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-2">💪 BenchTracker</h1>
+        <h1 className="text-2xl font-bold mb-2">💪 ベンチプレスアプリ</h1>
         <p className="text-gray-500 text-sm mb-6">
           {isLogin ? "ログインして記録を確認" : "アカウントを作成"}
         </p>
@@ -93,7 +93,7 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gray-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition disabled:opacity-50"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition disabled:opacity-50"
           >
             {loading ? "処理中..." : isLogin ? "ログイン" : "アカウント作成"}
           </button>
